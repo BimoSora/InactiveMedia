@@ -49,7 +49,7 @@ const inKey = [
 bot.start(async(ctx)=>{
     if(ctx.chat.type == 'private') {
         await ctx.deleteMessage(ctx.message.message_id)
-        await ctx.reply(`Welcome <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\nWe are an inactive bot whose job is to detect members who send media.`,{
+        await ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\nWe are an inactive bot whose job is to detect members who send media.`,{
             parse_mode:'HTML',
             disable_web_page_preview: true,
             reply_markup:{
@@ -74,32 +74,16 @@ bot.action('HELP', async(ctx)=>{
 
 bot.action('DONATION', async(ctx)=>{
     await ctx.deleteMessage()
-    let str = process.env.ADMIN;
-    let result = str.includes(ctx.from.id);
-
-    if(result == true){
-        await ctx.reply(`${helpcommand.botdonation}`,{
-            parse_mode:'HTML',
-            disable_web_page_preview: true,
-            reply_markup:{
-                inline_keyboard:[
-                    [{text:'💰 DONATION',url:'https://www.paypal.me/BimoSora/5.00'}],
-                    [{text:'⬅️ BACK',callback_data:'STARTUP'}]
-                ]
-            }
-        })
-    }else{
-        await ctx.reply(`${helpcommand.botdonation}`,{
-            parse_mode:'HTML',
-            disable_web_page_preview: true,
-            reply_markup:{
-                inline_keyboard:[
-                    [{text:'💰 DONATION',url:'https://www.paypal.me/BimoSora/5.00'}],
-                    [{text:'⬅️ BACK',callback_data:'STARTUP'}]
-                ]
-            }
-        })
-    }
+    await ctx.reply(`${helpcommand.botdonation}`,{
+        parse_mode:'HTML',
+        disable_web_page_preview: true,
+        reply_markup:{
+            inline_keyboard:[
+                [{text:'💰 DONATION',url:'https://www.paypal.me/BimoSora/5.00'}],
+                [{text:'⬅️ BACK',callback_data:'STARTUP'}]
+            ]
+        }
+    })
 })
 
 bot.action('STARTUP', async(ctx)=>{
