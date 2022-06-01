@@ -88,7 +88,7 @@ bot.action('DONATION', async(ctx)=>{
 
 bot.action('STARTUP', async(ctx)=>{
     await ctx.deleteMessage()
-    await ctx.reply(`<a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\nWe are an inactive bot whose job is to detect members who send media.`,{
+    await ctx.reply(`Welcome <a href="tg://user?id=${ctx.from.id}">${first_name(ctx)} ${last_name(ctx)}</a> \n\nWe are an inactive bot whose job is to detect members who send media.`,{
         parse_mode:'HTML',
         disable_web_page_preview: true,
         reply_markup:{
