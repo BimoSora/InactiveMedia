@@ -11,6 +11,6 @@ If a new user logs in, the bot will save the user data. The bot also reads when 
 <b>- Bot must be admin with full access.
 - Admin with block access, admin with anonymous access, admin with group owner access. They can use bot.</b>`;
 
-module.exports.botdonation = `You want to make a <b>donation</b> or want to buy the <b>source code</b> of our bot.
+module.exports.botdonation = `You want to make a <b>donation</b> of our bot.
 
 Contact CiMol and Sora Hearts.`;
