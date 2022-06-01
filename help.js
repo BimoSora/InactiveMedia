@@ -13,4 +13,4 @@ If a new user logs in, the bot will save the user data. The bot also reads when 
 
 module.exports.botdonation = `You want to make a <b>donation</b> of our bot.
 
-Contact CiMol and Sora Hearts.`;
+Contact @SoraHearts`;
