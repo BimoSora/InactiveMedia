@@ -145,7 +145,7 @@ bot.command('info',async(ctx)=>{
                                 const name2 = array1.nameId ? `<a href="tg://user?id=${array1.userId}">${array1.nameId}</a>` : "-";
                                 const username2 = array1.usenameId  ? array1.usenameId : "-";
                                 const type = array1.type ? array1.type.slice(0,1).toUpperCase() + array1.type.substr(1) : "-";
-                                await ctx.reply(`<b>User info</b> \n🆔 ID: <code>${array1.userId}</code> \n👱 Name: ${name2} \n🌐 Username: ${username2} \n💬 Message: ${array1.post} media \n💭 Last message type: ${type}`,{
+                                await ctx.reply(`<b>User info</b> \n🆔 <b>ID:</b> <code>${array1.userId}</code> \n👱 <b>Name:</b> ${name2} \n🌐 <b>Username:</b> ${username2} \n💬 <b>Message:</b> ${array1.post} media \n💭 <b>Last message type:</b> ${type}`,{
                                     parse_mode:'HTML'
                                 })
                             }else{
@@ -180,7 +180,7 @@ bot.command('info',async(ctx)=>{
                                     const name2 = array1.nameId ? `<a href="tg://user?id=${array1.userId}">${array1.nameId}</a>` : "-";
                                     const username2 = array1.usenameId  ? array1.usenameId : "-";
                                     const type = array1.type ? array1.type.slice(0,1).toUpperCase() + array1.type.substr(1) : "-";
-                                    await ctx.reply(`<b>User info</b> \n🆔 ID: <code>${array1.userId}</code> \n👱 Name: ${name2} \n🌐 Username: ${username2} \n💬 Message: ${array1.post} media \n💭 Last message type: ${type}`,{
+                                    await ctx.reply(`<b>User info</b> \n🆔 <b>ID:</b> <code>${array1.userId}</code> \n👱 <b>Name:</b> ${name2} \n🌐 <b>Username:</b> ${username2} \n💬 <b>Message:</b> ${array1.post} media \n💭 <b>Last message type:</b> ${type}`,{
                                         parse_mode:'HTML'
                                     })
                                 }else{
@@ -216,7 +216,7 @@ bot.command('info',async(ctx)=>{
                                 const name2 = array1.nameId ? `<a href="tg://user?id=${array1.userId}">${array1.nameId}</a>` : "-";
                                 const username2 = array1.usenameId  ? array1.usenameId : "-";
                                 const type = array1.type ? array1.type.slice(0,1).toUpperCase() + array1.type.substr(1) : "-";
-                                await ctx.reply(`<b>User info</b> \n🆔 ID: <code>${array1.userId}</code> \n👱 Name: ${name2} \n🌐 Username: ${username2} \n💬 Message: ${array1.post} media \n💭 Last message type: ${type}`,{
+                                await ctx.reply(`<b>User info</b> \n🆔 <b>ID:</b> <code>${array1.userId}</code> \n👱 <b>Name:</b> ${name2} \n🌐 <b>Username:</b> ${username2} \n💬 <b>Message:</b> ${array1.post} media \n💭 <b>Last message type:</b> ${type}`,{
                                     parse_mode:'HTML'
                                 })
                             }else{
