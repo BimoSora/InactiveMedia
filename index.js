@@ -828,6 +828,8 @@ bot.command('stats',async(ctx)=>{
         }
     }
 })
+
+bot.catch(e => console.error(e))
  
 //Heroku config
 domain = `${process.env.DOMAIN}.herokuapp.com`
