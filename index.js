@@ -45,6 +45,8 @@ const inKey = [
     [{text:'🗳 DONATION',callback_data:'DONATION'}]
 ];
 
+bot.catch(e => console.error(e))
+
 //BOT START
 bot.start(async(ctx)=>{
     if(ctx.chat.type == 'private') {
@@ -828,8 +830,6 @@ bot.command('stats',async(ctx)=>{
         }
     }
 })
-
-bot.catch(e => console.error(e))
  
 //Heroku config
 domain = `${process.env.DOMAIN}.herokuapp.com`
