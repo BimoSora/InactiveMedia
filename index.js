@@ -68,7 +68,7 @@ bot.action('HELP', async(ctx)=>{
         disable_web_page_preview: true,
         reply_markup:{
             inline_keyboard:[
-                [{text:'⬅️ BACK',callback_data:'STARTUP'}]
+                [{text:'🔙 BACK',callback_data:'STARTUP'}]
             ]
         }
     })
@@ -82,7 +82,7 @@ bot.action('DONATION', async(ctx)=>{
         reply_markup:{
             inline_keyboard:[
                 [{text:'💰 DONATION',url:'https://www.paypal.me/BimoSora/5.00'}],
-                [{text:'⬅️ BACK',callback_data:'STARTUP'}]
+                [{text:'🔙 BACK',callback_data:'STARTUP'}]
             ]
         }
     })
