@@ -239,8 +239,8 @@ bot.command('info',async(ctx)=>{
 
 //New member
 bot.on('new_chat_members', async(ctx) => {
-    console.log(ctx)
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
+        console.log(ctx)
         const botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
 
         function first_name2(ctx){
@@ -451,8 +451,8 @@ bot.command('inactive',async(ctx)=>{
 
 //My chat member
 bot.on('my_chat_member',async(ctx)=>{
-    console.log(ctx)
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
+        console.log(ctx)
         if(ctx.botInfo.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
             const chatDel2 = {
                 chatId: ctx.update.my_chat_member.chat.id,
@@ -466,28 +466,57 @@ bot.on('my_chat_member',async(ctx)=>{
 
 //Left chat member
 bot.on('left_chat_member',async(ctx)=>{
-    console.log(ctx)
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
+        console.log(ctx)
 
         await ctx.deleteMessage(ctx.message.message_id)
 
-        try{
-            const botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
+        if(ctx.from.username == 'GroupAnonymousBot'){
             if(botStatus.status == 'administrator'){
-                const query = {
-                    chatId: ctx.message.chat.id,
-                    userId: ctx.message.left_chat_member.id
-                }
-                await saver.checkUser(query).then(async res => {
-                    if(res == true) {
-                        await saver.delUser2(query)
-                    }else{
+                if(botStatus.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                    try{
+                        const botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
+                        if(botStatus.status == 'administrator'){
+                            const query = {
+                                chatId: ctx.message.chat.id,
+                                userId: ctx.message.left_chat_member.id
+                            }
+                            await saver.checkUser(query).then(async res => {
+                                if(res == true) {
+                                    await saver.delUser2(query)
+                                }else{
+
+                                }
+                            })
+                        }
+                    }catch(error){
 
                     }
-                })
+                }
             }
-        }catch(error){
+        }else{
+            if(botStatus.status == 'administrator'){
+                if(botStatus.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                    try{
+                        const botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
+                        if(botStatus.status == 'administrator'){
+                            const query = {
+                                chatId: ctx.message.chat.id,
+                                userId: ctx.message.left_chat_member.id
+                            }
+                            await saver.checkUser(query).then(async res => {
+                                if(res == true) {
+                                    await saver.delUser2(query)
+                                }else{
 
+                                }
+                            })
+                        }
+                    }catch(error){
+
+                    }
+                }
+            }
         }
     }
 })
