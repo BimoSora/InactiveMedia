@@ -240,6 +240,7 @@ bot.command('info',async(ctx)=>{
 //New member
 bot.on('new_chat_members', async(ctx) => {
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
+        console.log(ctx)
 
         function first_name2(ctx){
             return `${ctx.message.new_chat_member.first_name ? ctx.message.new_chat_member.first_name : ""}`;
