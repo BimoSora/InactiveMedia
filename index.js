@@ -241,7 +241,6 @@ bot.command('info',async(ctx)=>{
 bot.on('new_chat_members', async(ctx) => {
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
         console.log(ctx)
-        const botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
 
         function first_name2(ctx){
             return `${ctx.message.new_chat_member.first_name ? ctx.message.new_chat_member.first_name : ""}`;
@@ -254,8 +253,8 @@ bot.on('new_chat_members', async(ctx) => {
         }
 
         if(ctx.from.username == 'GroupAnonymousBot'){
-            if(botStatus.status == 'administrator'){
-                if(botStatus.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+            if(ctx.botInfo.status == 'administrator'){
+                if(ctx.botInfo.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
                     const query = {
                         chatId: ctx.message.chat.id,
                         userId: ctx.message.new_chat_member.id
@@ -288,13 +287,13 @@ bot.on('new_chat_members', async(ctx) => {
                     })
                 }
             }else{
-                if(botStatus.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                if(ctx.botInfo.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
                     
                 }
             }
         }else{
-            if(botStatus.status == 'administrator'){
-                if(botStatus.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+            if(ctx.botInfo.status == 'administrator'){
+                if(ctx.botInfo.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
                     const query = {
                         chatId: ctx.message.chat.id,
                         userId: ctx.message.new_chat_member.id
@@ -327,7 +326,7 @@ bot.on('new_chat_members', async(ctx) => {
                     })
                 }
             }else{
-                if(botStatus.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                if(ctx.botInfo.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
                     
                 }
             }
