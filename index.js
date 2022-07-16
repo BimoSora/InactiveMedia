@@ -254,7 +254,7 @@ bot.on('new_chat_members', async(ctx) => {
 
         if(ctx.from.username == 'GroupAnonymousBot'){
             if(ctx.botInfo.status == 'administrator'){
-                if(ctx.botInfo.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                if(ctx.botInfo.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
                     const query = {
                         chatId: ctx.message.chat.id,
                         userId: ctx.message.new_chat_member.id
@@ -287,13 +287,13 @@ bot.on('new_chat_members', async(ctx) => {
                     })
                 }
             }else{
-                if(ctx.botInfo.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                if(ctx.botInfo.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
                     
                 }
             }
         }else{
             if(ctx.botInfo.status == 'administrator'){
-                if(ctx.botInfo.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                if(ctx.botInfo.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
                     const query = {
                         chatId: ctx.message.chat.id,
                         userId: ctx.message.new_chat_member.id
@@ -326,7 +326,7 @@ bot.on('new_chat_members', async(ctx) => {
                     })
                 }
             }else{
-                if(ctx.botInfo.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                if(ctx.botInfo.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
                     
                 }
             }
