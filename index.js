@@ -664,7 +664,43 @@ bot.on('document', async(ctx) => {
         const memberstatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.from.id)
 
         if(ctx.from.username == 'GroupAnonymousBot'){
-                  
+            if(botStatus.status == 'administrator'){
+                if(botStatus.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                    const query = {
+                        chatId: ctx.chat.id,
+                        userId: ctx.from.id
+                    }
+                    await saver.checkUser(query).then(async res => {
+                        if(res == true) {
+                            const res1 = await saver.getUser(query)
+                            const array1 = res1;
+                            const user = {
+                                chatId: ctx.chat.id,
+                                userId: ctx.from.id,
+                                nameId: `${first_name(ctx)} ${last_name(ctx)}`,
+                                usenameId: `${username(ctx)}`,
+                                post: array1.post + 1,
+                                type: 'document'
+                            }
+                            await saver.updateUser(user)
+                        }else{
+                            const user = {
+                                chatId: ctx.chat.id,
+                                userId: ctx.from.id,
+                                nameId: `${first_name(ctx)} ${last_name(ctx)}`,
+                                usenameId: `${username(ctx)}`,
+                                post: 1,
+                                type: 'document'
+                            }
+                            await saver.saveUser(user)
+                        }
+                    })
+                }
+            }else{
+                if(botStatus.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                    
+                }
+            } 
         }else{
             if(botStatus.status == 'administrator'){
                 if(botStatus.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
@@ -712,10 +748,44 @@ bot.on('video', async(ctx) => {
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
         const botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
 
-        console.log(ctx);
-
         if(ctx.from.username == 'GroupAnonymousBot'){
-                  
+            if(botStatus.status == 'administrator'){
+                if(botStatus.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                    const query = {
+                        chatId: ctx.chat.id,
+                        userId: ctx.from.id
+                    }            
+                    await saver.checkUser(query).then(async res => {
+                        if(res == true) {
+                            const res1 = await saver.getUser(query)
+                            const array1 = res1;
+                            const user = {
+                                chatId: ctx.chat.id,
+                                userId: ctx.from.id,
+                                nameId: `${first_name(ctx)} ${last_name(ctx)}`,
+                                usenameId: `${username(ctx)}`,
+                                post: array1.post + 1,
+                                type: 'video'
+                            }
+                            await saver.updateUser(user)
+                        }else{
+                            const user = {
+                                chatId: ctx.chat.id,
+                                userId: ctx.from.id,
+                                nameId: `${first_name(ctx)} ${last_name(ctx)}`,
+                                usenameId: `${username(ctx)}`,
+                                post: 1,
+                                type: 'video'
+                            }
+                            await saver.saveUser(user)
+                        }
+                    })
+                }
+            }else{
+                if(botStatus.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                    
+                }
+            }
         }else{
             if(botStatus.status == 'administrator'){
                 if(botStatus.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
@@ -764,7 +834,43 @@ bot.on('photo', async(ctx) => {
         const botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
 
         if(ctx.from.username == 'GroupAnonymousBot'){
-                  
+            if(botStatus.status == 'administrator'){
+                if(botStatus.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                    const query = {
+                        chatId: ctx.chat.id,
+                        userId: ctx.from.id
+                    }
+                    await saver.checkUser(query).then(async res => {
+                        if(res == true) {
+                            const res1 = await saver.getUser(query)
+                            const array1 = res1;
+                            const user = {
+                                chatId: ctx.chat.id,
+                                userId: ctx.from.id,
+                                nameId: `${first_name(ctx)} ${last_name(ctx)}`,
+                                usenameId: `${username(ctx)}`,
+                                post: array1.post + 1,
+                                type: 'photo'
+                            }
+                            await saver.updateUser(user)
+                        }else{
+                            const user = {
+                                chatId: ctx.chat.id,
+                                userId: ctx.from.id,
+                                nameId: `${first_name(ctx)} ${last_name(ctx)}`,
+                                usenameId: `${username(ctx)}`,
+                                post: 1,
+                                type: 'photo'
+                            }
+                            await saver.saveUser(user)
+                        }
+                    })
+                }
+            }else{
+                if(botStatus.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                    
+                }
+            }
         }else{
             if(botStatus.status == 'administrator'){
                 if(botStatus.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
