@@ -128,7 +128,7 @@ bot.command('info',async(ctx)=>{
         msgArray.shift()
         let text = msgArray.join(' ')
         
-        console.log(ctx);
+        console.log(ctx.message.chat);
 
         if(memberstatus.status == 'creator'){
             if(botStatus.status == 'administrator'){
