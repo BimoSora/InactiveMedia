@@ -467,6 +467,7 @@ bot.on('my_chat_member',async(ctx)=>{
 //Left chat member
 bot.on('left_chat_member',async(ctx)=>{
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
+        const botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
 
         await ctx.deleteMessage(ctx.message.message_id)
 
