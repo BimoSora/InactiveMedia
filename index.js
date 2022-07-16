@@ -127,8 +127,6 @@ bot.command('info',async(ctx)=>{
         let msgArray = msg.split(' ')
         msgArray.shift()
         let text = msgArray.join(' ')
-        
-        console.log(ctx.from);
 
         if(memberstatus.status == 'creator'){
             if(botStatus.status == 'administrator'){
@@ -713,6 +711,8 @@ bot.on('document', async(ctx) => {
 bot.on('video', async(ctx) => {
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
         const botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
+
+        console.log(ctx);
 
         if(ctx.from.username == 'GroupAnonymousBot'){
                   
