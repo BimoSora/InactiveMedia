@@ -238,96 +238,40 @@ bot.command('info',async(ctx)=>{
 })
 
 //New member
-bot.on('new_chat_members', async(ctx) => {
+bot.on('my_chat_member',async(ctx)=>{
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
         console.log(ctx)
 
-        function first_name2(ctx){
-            return `${ctx.message.new_chat_member.first_name ? ctx.message.new_chat_member.first_name : ""}`;
-        }
-        function last_name2(ctx){
-            return `${ctx.message.new_chat_member.last_name ? ctx.message.new_chat_member.last_name : ""}`;
-        }
-        function username2(ctx){
-            return ctx.message.new_chat_member.username ? `@${ctx.message.new_chat_member.username}` : "";
-        }
-
+        await ctx.deleteMessage(ctx.message.message_id)
+        
         if(ctx.from.username == 'GroupAnonymousBot'){
             if(ctx.botInfo.status == 'administrator'){
-                if(ctx.botInfo.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
-                    const query = {
-                        chatId: ctx.message.chat.id,
-                        userId: ctx.message.new_chat_member.id
-                    }
-                    await ctx.deleteMessage(ctx.message.message_id)
-                    await saver.checkUser(query).then(async res => {
-                        if(res == true) {
-                            const res1 = await saver.getUser(query)
-                            const array1 = res1;
-                            const user = {
-                                chatId: ctx.message.chat.id,
-                                userId: ctx.message.new_chat_member.id,
-                                nameId: `${first_name2(ctx)} ${last_name2(ctx)}`,
-                                usenameId: `${username2(ctx)}`,
-                                post: array1.post + 1,
-                                type: ''
-                            }
-                            await saver.updateUser(user)
-                        }else{
-                            const user = {
-                                chatId: ctx.message.chat.id,
-                                userId: ctx.message.new_chat_member.id,
-                                nameId: `${first_name2(ctx)} ${last_name2(ctx)}`,
-                                usenameId: `${username2(ctx)}`,
-                                post: 0,
-                                type: ''
-                            }
-                            await saver.saveUser(user)
+                if(ctx.botInfo.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                    try{
+                        const chatDel2 = {
+                            chatId: ctx.update.my_chat_member.chat.id,
                         }
-                    })
-                }
-            }else{
-                if(ctx.botInfo.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
-                    
+                        if(ctx.update.my_chat_member.new_chat_member.status == 'left'){
+                            await saver.delUser3(chatDel2)
+                        }
+                    }catch(error){
+        
+                    }
                 }
             }
         }else{
             if(ctx.botInfo.status == 'administrator'){
-                if(ctx.botInfo.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
-                    const query = {
-                        chatId: ctx.message.chat.id,
-                        userId: ctx.message.new_chat_member.id
-                    }
-                    await ctx.deleteMessage(ctx.message.message_id)
-                    await saver.checkUser(query).then(async res => {
-                        if(res == true) {
-                            const res1 = await saver.getUser(query)
-                            const array1 = res1;
-                            const user = {
-                                chatId: ctx.message.chat.id,
-                                userId: ctx.message.new_chat_member.id,
-                                nameId: `${first_name2(ctx)} ${last_name2(ctx)}`,
-                                usenameId: `${username2(ctx)}`,
-                                post: array1.post + 1,
-                                type: ''
-                            }
-                            await saver.updateUser(user)
-                        }else{
-                            const user = {
-                                chatId: ctx.message.chat.id,
-                                userId: ctx.message.new_chat_member.id,
-                                nameId: `${first_name2(ctx)} ${last_name2(ctx)}`,
-                                usenameId: `${username2(ctx)}`,
-                                post: 0,
-                                type: ''
-                            }
-                            await saver.saveUser(user)
+                if(ctx.botInfo.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+                    try{
+                        const chatDel2 = {
+                            chatId: ctx.update.my_chat_member.chat.id,
                         }
-                    })
-                }
-            }else{
-                if(ctx.botInfo.user.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
-                    
+                        if(ctx.update.my_chat_member.new_chat_member.status == 'left'){
+                            await saver.delUser3(chatDel2)
+                        }
+                    }catch(error){
+        
+                    }
                 }
             }
         }
@@ -493,38 +437,12 @@ bot.command('inactive',async(ctx)=>{
 bot.on('my_chat_member',async(ctx)=>{
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
         console.log(ctx)
-
-        await ctx.deleteMessage(ctx.message.message_id)
-        
-        if(ctx.from.username == 'GroupAnonymousBot'){
-            if(ctx.botInfo.status == 'administrator'){
-                if(ctx.botInfo.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
-                    try{
-                        const chatDel2 = {
-                            chatId: ctx.update.my_chat_member.chat.id,
-                        }
-                        if(ctx.update.my_chat_member.new_chat_member.status == 'left'){
-                            await saver.delUser3(chatDel2)
-                        }
-                    }catch(error){
-        
-                    }
-                }
+        if(ctx.botInfo.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
+            const chatDel2 = {
+                chatId: ctx.update.my_chat_member.chat.id,
             }
-        }else{
-            if(ctx.botInfo.status == 'administrator'){
-                if(ctx.botInfo.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
-                    try{
-                        const chatDel2 = {
-                            chatId: ctx.update.my_chat_member.chat.id,
-                        }
-                        if(ctx.update.my_chat_member.new_chat_member.status == 'left'){
-                            await saver.delUser3(chatDel2)
-                        }
-                    }catch(error){
-        
-                    }
-                }
+            if(ctx.update.my_chat_member.new_chat_member.status == 'left'){
+                await saver.delUser3(chatDel2)
             }
         }
     }
@@ -534,6 +452,7 @@ bot.on('my_chat_member',async(ctx)=>{
 bot.on('left_chat_member',async(ctx)=>{
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
         const botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
+        console.log(ctx)
 
         await ctx.deleteMessage(ctx.message.message_id)
 
