@@ -239,7 +239,7 @@ bot.command('info',async(ctx)=>{
 
 //New member
 bot.on('new_chat_members', async(ctx) => {
-    console.log(ctx.from)
+    console.log(ctx)
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
         const botStatus = await bot.telegram.getChatMember(ctx.chat.id, ctx.botInfo.id)
 
@@ -451,7 +451,7 @@ bot.command('inactive',async(ctx)=>{
 
 //My chat member
 bot.on('my_chat_member',async(ctx)=>{
-    console.log(ctx.from)
+    console.log(ctx)
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
         if(ctx.botInfo.username.toLowerCase() == `${process.env.BOTUSERNAME}`){
             const chatDel2 = {
@@ -466,7 +466,7 @@ bot.on('my_chat_member',async(ctx)=>{
 
 //Left chat member
 bot.on('left_chat_member',async(ctx)=>{
-    console.log(ctx.from)
+    console.log(ctx)
     if(ctx.chat.type == 'group' || ctx.chat.type == 'supergroup') {
 
         await ctx.deleteMessage(ctx.message.message_id)
